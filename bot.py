@@ -3,7 +3,7 @@ from flask import Flask, request
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 
-app = Flask(name)
+app = Flask(__name__)
 
 # گرفتن توکن و آیدی کانال از متغیرهای محیطی
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
