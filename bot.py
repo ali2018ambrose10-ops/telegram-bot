@@ -3,7 +3,7 @@ from flask import Flask, request
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
 
-app = Flask(name)
+app = Flask(__name__)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHANNEL_ID = os.environ.get("CHANNEL_ID")
@@ -53,6 +53,6 @@ def webhook():
 def index():
     return "ربات فعال است!"
 
-if name == "main":
+if __name__ == "__main__":
     updater.start_webhook(listen="0.0.0.0", port=int(os.environ.get("PORT", 10000)), url_path=BOT_TOKEN)
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
